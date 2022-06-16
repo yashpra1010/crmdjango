@@ -19,9 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from crm_api import urls as crm_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('accounts.urls'))
+    path('',include('accounts.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('crm-apis/', include(crm_urls)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
