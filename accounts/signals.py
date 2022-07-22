@@ -11,6 +11,7 @@ def customer_profile(sender, instance, created, **kwargs):
             user=instance,
             name=instance.username,
             email=instance.email,
+            #phone=instance.phone,
         )
         print("Profile Created!")
 
