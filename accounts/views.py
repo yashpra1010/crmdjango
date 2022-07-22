@@ -80,15 +80,15 @@ def createOrder(request, pk):
 def updateOrder(request, pk):
     order = Order.objects.get(id=pk)
     form = OrderForm(instance=order)
-
+    
     if request.method == 'POST':
         #print('Printing POST:',request.POST)
         form = OrderForm(request.POST, instance=order)
         if form.is_valid:
             form.save()
             return redirect('/')
-
-    context = {'form': form}
+    
+    context = {'formset': form}
     return render(request, 'accounts/order_form.html', context)
 
 
