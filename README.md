@@ -1,5 +1,5 @@
 ## Customer Relation Managment (CRM)
-###### Using Django Framework
+###### Web-App Using Django Framework + Django REST Framework
 
 ## QUICK LINKS
 - [Home](https://crmappyp10.herokuapp.com/)
