@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'accounts.apps.AccountsConfig',
     'crm_api',
     'django_filters',
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'crm1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +74,12 @@ TEMPLATES = [
         },
     },
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'yashpra1010',
+    'API_KEY': '917192215444534',
+    'API_SECRET': 'QcFCFISD4iwSvmqIRvzdaYGYi1E'
+}
 
 WSGI_APPLICATION = 'crm1.wsgi.application'
 
@@ -122,6 +131,8 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
 ]
@@ -140,3 +151,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+#'''
+#SMTP Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'pipinstallgeeks@gmail.com'
+EMAIL_HOST_PASSWORD = 'akoeabxhmphromrg'
+
+#'''

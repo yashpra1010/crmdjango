@@ -12,7 +12,10 @@ from django.contrib import messages as msg
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+
 
 @login_required(login_url="login")
 @admin_only
@@ -112,7 +115,20 @@ def registerPage(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
+            user_mail = form.cleaned_data.get('email')
             
+            template = render_to_string('accounts/mail_body.html',{'user':username})
+            
+            #For emailing after successful registration
+            email = EmailMessage(
+                'Welcome to the CRM Web-App',
+                template,
+                settings.EMAIL_HOST_USER,
+                [user_mail],
+            )
+            email.fail_silently = False
+            email.send()
+
             msg.success(request,'Account was created for '+ username)
             return redirect('login')
     context = {'form': form}
