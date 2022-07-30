@@ -1,7 +1,6 @@
 {%  extends 'accounts/main.html' %}
 {% load static %}
 {% block content %}
-
 <style>
 	.profile-pic{
 		max-width: 200px;
@@ -19,7 +18,7 @@
 			<hr>
 			<h3 style="text-align: center">Account Settings</h3>
 			<hr>
-			<img class="profile-pic" src="/static{{request.user.customer.profile_pic.url}}" >
+			<img class="profile-pic" src="{{request.user.customer.profile_pic.url}}" >
 		
 		</div>
 	</div>
@@ -28,7 +27,6 @@
 			<form method="POST" action="" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{form.as_p}}
-		
 			<input class="btn btn-primary" type="submit" name="Update Information">
 			</form>
 		</div>
