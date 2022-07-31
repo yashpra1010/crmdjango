@@ -117,7 +117,8 @@ def registerPage(request):
             user = form.save()
             username = form.cleaned_data.get('username')
             user_mail = form.cleaned_data.get('email')
-            
+            from_mail = settings.EMAIL_HOST_USER
+            '''
             #For emailing after successful registration
             template = render_to_string('accounts/mail_body.html',{'user':username})
             email = EmailMessage(
@@ -128,10 +129,18 @@ def registerPage(request):
             )
             email.fail_silently = False
             email.send()
-
+'''
             #sending HTML mail
-            #html_content = render_to_string('accounts/mail_body.html',{'user':username})
-
+            html_content = render_to_string('accounts/mail_body.html',{'user':username})
+            text_content = strip_tags(html_content)
+            email = EmailMultiAlternatives(
+                'Welcome to the CRM Web-App',
+                text_content,
+                from_mail,
+                [user_mail],
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send()
             msg.success(request,'Account was created for '+ username)
             return redirect('login')
     context = {'form': form}
