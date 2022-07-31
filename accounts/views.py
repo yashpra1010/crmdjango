@@ -83,14 +83,37 @@ def createOrder(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def updateOrder(request, pk):
     order = Order.objects.get(id=pk)
+    cust_name = order.customer.name
+    cust_email = order.customer.email
     form = OrderForm(instance=order)
-    
+    from_mail = settings.EMAIL_HOST_USER
+
     if request.method == 'POST':
-        #print('Printing POST:',request.POST)
+        if request.POST['status'] == 'Out for delivery':
+            html_content = render_to_string('accounts/out_for_delivery.html',{'user':cust_name,'order':order})
+            text_content = strip_tags(html_content)
+            email = EmailMultiAlternatives(
+                'Your order is out for delivery',
+                text_content,
+                from_mail,
+                [cust_email],
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send()
+        elif request.POST['status'] == 'Delivered':
+            html_content = render_to_string('accounts/delivered.html',{'user':cust_name,'order':order})
+            text_content = strip_tags(html_content)
+            email = EmailMultiAlternatives(
+                'Your order delivered',
+                text_content,
+                from_mail,
+                [cust_email],
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send()
         form = OrderForm(request.POST, instance=order)
-        if form.is_valid:
-            form.save()
-            return redirect('/')
+        form.save()
+        return redirect('/')
     
     context = {'formset': form}
     return render(request, 'accounts/order_form.html', context)
@@ -118,18 +141,7 @@ def registerPage(request):
             username = form.cleaned_data.get('username')
             user_mail = form.cleaned_data.get('email')
             from_mail = settings.EMAIL_HOST_USER
-            '''
-            #For emailing after successful registration
-            template = render_to_string('accounts/mail_body.html',{'user':username})
-            email = EmailMessage(
-                'Welcome to the CRM Web-App',
-                template,
-                settings.EMAIL_HOST_USER,
-                [user_mail],
-            )
-            email.fail_silently = False
-            email.send()
-'''
+
             #sending HTML mail
             html_content = render_to_string('accounts/mail_body.html',{'user':username})
             text_content = strip_tags(html_content)
@@ -193,3 +205,17 @@ def accountSettings(request):
 
 	context = {'form':form}
 	return render(request, 'accounts/account_settings.html', context)
+
+
+'''
+            #For emailing after successful registration
+            template = render_to_string('accounts/mail_body.html',{'user':username})
+            email = EmailMessage(
+                'Welcome to the CRM Web-App',
+                template,
+                settings.EMAIL_HOST_USER,
+                [user_mail],
+            )
+            email.fail_silently = False
+            email.send()
+'''
