@@ -12,7 +12,8 @@ from django.contrib import messages as msg
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage,EmailMultiAlternatives
+from django.utils.html import strip_tags
 from django.conf import settings
 from django.template.loader import render_to_string
 
@@ -116,10 +117,10 @@ def registerPage(request):
             user = form.save()
             username = form.cleaned_data.get('username')
             user_mail = form.cleaned_data.get('email')
-            
-            template = render_to_string('accounts/mail_body.html',{'user':username})
-            
+            from_mail = settings.EMAIL_HOST_USER
+            '''
             #For emailing after successful registration
+            template = render_to_string('accounts/mail_body.html',{'user':username})
             email = EmailMessage(
                 'Welcome to the CRM Web-App',
                 template,
@@ -128,7 +129,18 @@ def registerPage(request):
             )
             email.fail_silently = False
             email.send()
-
+'''
+            #sending HTML mail
+            html_content = render_to_string('accounts/mail_body.html',{'user':username})
+            text_content = strip_tags(html_content)
+            email = EmailMultiAlternatives(
+                'Welcome to the CRM Web-App',
+                text_content,
+                from_mail,
+                [user_mail],
+            )
+            email.attach_alternative(html_content, "text/html")
+            email.send()
             msg.success(request,'Account was created for '+ username)
             return redirect('login')
     context = {'form': form}
