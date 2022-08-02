@@ -1,42 +1,76 @@
+<style>
+	.row1{
+		margin-left: 8vh;
+	}
+	.row1 .card{
+		width: 40vh;
+	}
+	.row1 .col {
+		margin-left: 10vh;
+	}
+
+	.dash-cards {
+		width: 50vh ;
+  display: flex;
+  margin-left: 1.4vw;
+  background: #f3a839;
+  
+  height: 140px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 13px;
+}
+
+.icon-back {
+	margin-top: 15px;
+	margin-left: 5px;
+  background: #00000033;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  color: #fff;
+}
+
+.icon-back i {
+margin-left: 2px;
+  font-size: 30px !important;
+  text-align: center;
+  padding-top: 20px;
+  padding-left: 17px;
+}
+
+</style>
 <br>
 
-<div class="row">
-	<div class="col">
-		<div class="col-md">
-			<div class="card text-center text-white  mb-3" id="total-orders">
-			  	<div class="card-header">
-			  		<h5 class="card-title">Total Orders</h5>
-			  	</div>
-			  	<div class="card-body">
-			    	<h3 class="card-title">{{total_orders}}</h3>
-			  	</div>
-			</div>
+<div class="row1 row">
+	<div class="dash-cards">
+		<div class="icon-back icon-back-users">
+			<i class="far fa-thin fa-box"></i>
+		</div>
+		<div>
+			<h5 style="margin-left: 3vw; color: #fff; font-size: 27px; margin-top: 15px;">
+				Total Orders<br> <a style="font-size: 30px; line-height: 50px;">{{total_orders}}</a>
+			</h5>
+		</div>
+	</div>
+	<div class="dash-cards">
+		<div class="icon-back icon-back-users">
+			<i class="far fa-thin fa-check"></i>
+		</div>
+		<div>
+			<h5 style="margin-left: 3vw; color: #fff; font-size: 27px; margin-top: 15px;">
+				Orders Delivered<br> <a style="font-size: 30px; line-height: 50px;">{{delivered}}</a>
+			</h5>
+		</div>
+	</div>
+	<div class="dash-cards">
+		<div class="icon-back icon-back-users">
+			<i class="far fa-thin fa-clock"></i>
+		</div>
+		<div>
+			<h5 style="margin-left: 3vw; color: #fff; font-size: 27px; margin-top: 15px;">
+				Orders Pending<br> <a style="font-size: 30px; line-height: 50px;">{{pending}}</a>
+			</h5>
 		</div>
 	</div>
 
-	<div class="col">
-		<div class="col-md">
-			<div class="card text-center text-white  mb-3" id="orders-delivered">
-			  	<div class="card-header">
-			  		<h5 class="card-title">Orders Delivered</h5>
-			  	</div>
-			  	<div class="card-body">
-			    	<h3 class="card-title">{{delivered}}</h3>
-			  	</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="col">
-		<div class="col-md">
-			<div class="card text-center text-white  mb-3" id="orders-pending">
-			  	<div class="card-header">
-			  		<h5 class="card-title">Orders Pending</h5>
-			  	</div>
-			  	<div class="card-body">
-			    	<h3 class="card-title">{{pending}}</h3>
-			  	</div>
-			</div>
-		</div>
-	</div>
-</div>
+</div><br><br>

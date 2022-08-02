@@ -1,3 +1,40 @@
+<link rel="stylesheet" href="../../../static/css/scroll_table.css">
+<style>
+	body {
+		overflow-x: hidden;
+	}
+	.btn {
+		border-radius: 8px !important;
+		box-shadow: none !important;
+	}
+	.btn-secondary {
+		background: none !important;
+		color: #B23CFD !important;
+		border: solid 1px #B23CFD !important;
+	}
+	.btn-danger {
+		background: none !important;
+		color: #eb3232 !important;
+		border: solid 1px #eb3232 !important;
+	}
+	.btn-secondary:hover {
+		background: #B23CFD !important;
+		color: #fff !important;
+		border: solid 1px #B23CFD !important;
+	}
+	.btn-danger:hover {
+		background: #eb3232 !important;
+		color: #fff !important;
+		border: solid 1px #eb3232 !important;
+	}
+	.row2{
+		margin-left: 12vh !important;
+	}
+	.card3 {
+		width: 96vh !important;
+	}
+</style>
+
 {%  extends 'accounts/main.html' %}
 
 {% block content %}
@@ -6,34 +43,35 @@
 
 <br>
 
-<div class="row">
-	<div class="col-md-5">
-		<h5>CUSTOMERS:</h5>
+<div class="row row2">
+	<div class="col-md-4">
+		<h5>CUSTOMERS</h5>
 		<hr>
 		<div class="card card-body">
-			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a> -->
-			<table class="table table-sm">
+			
+			<table class="table table-sm table-condensed table-fixed">
 				<tr>
-					<th></th>
 					<th>Customer</th>
 					<th>Phone</th>
+					<th>Action</th>
 				</tr>
 				{% for customer in customers %}
 				<tr>
-					<td><a class="btn btn-secondary btn-sm btn-rounded" href="{% url 'customer' customer.id%}">View</a></td>
 					<td>{{ customer.name }}</td>
 					<td>{{ customer.phone }}</td>
+					<td><a class="btn btn-secondary btn-sm" href="{% url 'customer' customer.id %}">View</a></td>
 				</tr>
 				{% endfor %}
 			</table>
 		</div>
 	</div>
 
-	<div class="col-md-7">
-		<h5>LAST 5 ORDERS</h5>
+	<div class="col-md-6 card3">
+		<h5>ORDERS</h5>
 		<hr>
 		<div class="card card-body">
-			<table class="table table-sm">
+			<table class="table table-sm table-condensed table-fixed">
+				<thead>
 				<tr>
 					<th>Product</th>
 					<th>Date Orderd</th>
@@ -41,16 +79,18 @@
 					<th>Update</th>
 					<th>Remove</th>
 				</tr>
+			</thead>
+			<tbody>
 				{% for order in orders %}
 				<tr>
 					<td>{{ order.product }}</td>
 					<td>{{ order.date_created }}</td>
 					<td>{{ order.status }}</td>
-					<td><a class="btn btn-secondary btn-rounded btn-sm" href="{% url 'update_order' order.id %}">Update</a></td>
-					<td><a class="btn btn-danger btn-rounded btn-sm" href="{% url 'delete_order' order.id %}">Remove</a></td>
-					
+					<td><a class="btn btn-secondary btn-sm" href="{% url 'update_order' order.id %}">Update</a></td>
+					<td><a class="btn btn-danger btn-sm" href="{% url 'delete_order' order.id %}">Remove</a></td>
 				</tr>
 				{% endfor %}
+			</tbody>
 			</table>
 		</div>
 	</div>

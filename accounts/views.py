@@ -21,7 +21,7 @@ from django.template.loader import render_to_string
 @login_required(login_url="login")
 @admin_only
 def home(request):
-    orders = Order.objects.all()
+    orders = Order.objects.all().order_by('-id')
     customers = Customer.objects.all()
 
     total_customers = customers.count()
@@ -32,7 +32,6 @@ def home(request):
     context = {'orders': orders, 'customers': customers, 'total_customers': total_customers,
                'pending': pending, 'delivered': delivered, 'total_orders': total_orders}
     return render(request, 'accounts/dashboard.html', context)
-
 
 @login_required(login_url="login")
 @allowed_users(allowed_roles=['admin'])

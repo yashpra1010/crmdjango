@@ -1,3 +1,32 @@
+<style>
+	.table-fixed tbody {
+    display: block;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.table-fixed thead {
+    display: block !important;
+}
+
+.table-fixed tr {
+    display: block;
+
+}
+.table-fixed td {
+    width: 300px !important;
+    min-width: 100px !important;
+}
+
+.table-fixed thead tr th {
+    width: 300px !important;
+    min-width: 100px !important;
+    
+}
+.heading {
+	font-weight: 600;
+}
+</style>
 {%  extends 'accounts/main.html' %}
 
 {% block content %}
@@ -53,16 +82,17 @@
 <div class="row">
 	<div class="col-md">
 		<div class="card card-body">
-			<table class="table table-sm">
+			<table class="table table-sm table-condensed table-fixed">
+				<thead class="heading">
 				<tr>
-					<th>Product</th>
-					<th>Note</th>
-					<th>Date Orderd</th>
-					<th>Status</th>
-					<th>Update</th>
-					<th>Remove</th>
+					<td>Product</td>
+					<td>Note</td>
+					<td>Date Orderd</td>
+					<td>Status</td>
+					<td>Update</td>
+					<td>Remove</td>
 				</tr>
-				
+				</thead>
 				{% for order in orders %}
 				<tr>
 					<td>{{ order.product }}</td>

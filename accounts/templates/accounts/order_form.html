@@ -1,9 +1,21 @@
 {% extends 'accounts/main.html' %}
 {% load static %}
 {% block content %}
+<style>
+select,option {
+  padding: 5px 0px 0px 10px !important;
+  width: 200px !important;
+  height: 50px !important ;
+}
 
+label {
+  font-size: 20px !important;
+  margin-left: 50px !important;
+}
+
+</style>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-10">
     <div class="card card-body">
       <form method="post" action="">
         {% csrf_token %}
@@ -17,4 +29,10 @@
     </div>
   </div>
 </div>
+<script>
+var form_fields = document.getElementsByTagName('input')
+		/* for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		} */
+  </script>
 {% endblock %}
