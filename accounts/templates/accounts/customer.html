@@ -26,7 +26,27 @@
 .heading {
 	font-weight: 600;
 }
+.container-login100 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;  
+}
+
+.container-login100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.9);
+}
 </style>
+<div class="container-login100" style="background-image: url('../../../static/images/bg-01.jpg');">
 {%  extends 'accounts/main.html' %}
 
 {% block content %}
@@ -110,4 +130,4 @@
 	</div>
 </div>
 
-{% endblock %}
+{% endblock %}</div>

@@ -2,28 +2,66 @@
 {% load static %}
 {% block content %}
 <style>
+	body {
+		overflow-x: hidden;
+	}
+	.card-body p{
+		border-radius: 5px !important;
+	}
+	.card-body input{
+		border: none !important;
+		border-bottom: 1px solid #ccc !important;
+		margin-left: 3vh !important;
+	}
+
+	.card {
+		height: 350px !important;
+	}
+	.row {
+		margin-left: 50vh !important;
+	}
+
+	.container-login100 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;  
+}
+
+.container-login100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.9);
+}
 	.profile-pic{
 		max-width: 200px;
 		max-height:200px;
 		margin: 0 auto;
 		border-radius: 50%;
 	}
+	.profile-card img{
+		padding: 3vh 3vh 3vh 3vh !important;
+	}
+	
 </style>
-
-<br>
+<br><br><br>
 <div class="row">
 	<div class="col-md-3">
-		<div class="card card-body">
-			<a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Profile</a><br><br>
+		<div class="card card-body profile-card">
+			<!-- <a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Profile</a><br><br> -->
 			<img class="profile-pic" src="{{request.user.customer.profile_pic.url}}" >
-			<hr>
-			<h3 style="text-align: center">Account Settings</h3>
-			<hr>
-		
+			<h3 style="text-align: center; text-transform:capitalize;">{{request.user.customer.name}}</h3>
 		</div>
 	</div>
-	<div class="col-md-9">
-		<div class="card card-body">
+	<div class="col-md-5">
+		<div class="card card-body details-card">
 			<form method="POST" action="" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{form.as_p}}
@@ -32,7 +70,4 @@
 		</div>
 	</div>
 </div>
-
-
-
 {% endblock %}

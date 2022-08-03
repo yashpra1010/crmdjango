@@ -1,3 +1,60 @@
+<style>
+	.row {
+		margin-left: 5vh !important;
+		width: 45% !important;
+	}
+	.col-md {
+		border-radius: 100px !important;
+	}
+	.table-fixed tbody {
+		display: block;
+		height: 250px;
+		overflow-y: auto;
+	}
+	
+	.table-fixed thead {
+		display: block !important;
+	}
+
+	.table-fixed tr {
+		display: block;
+
+	}
+	.table-fixed td {
+		width: 200px !important;
+		min-width: 100px !important;
+	}
+
+	.table-fixed thead tr th {
+		width: 200px !important;
+		min-width: 100px !important;
+		
+	}
+	.heading td {
+		font-weight: 700 !important;
+	}
+	.container-login100 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;  
+}
+
+.container-login100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.9);
+}
+</style>
+<div class="container-login100" style="background-image: url('../../../static/images/bg-01.jpg');">
+
 {%  extends 'accounts/main.html' %}
 
 {% block content %}
@@ -7,15 +64,15 @@
 		<div class="row">
 			<div class="col-md">
 				<div class="card card-body">
-					<h5>Products</h5>
-				</div>
-				<div class="card card-body">
-					<table class="table">
+					<h5 style="font-weight: 700;"><i class="far fa-thin fa-box-open"></i>&nbsp;&nbsp;&nbsp;Products</h5><br>
+					<table class="table table-condensed table-fixed table-striped">
+						<thead class="heading">
 						<tr>
-							<th>Product</th>
-							<th>Category</th>
-							<th>Price</th>
+							<td>Product</td>
+							<td>Category</td>
+							<td>Price</td>
 						</tr>
+					</thead>
 						{% for i in products %}
 						<tr>
 							<td>{{i.name}}</td>
@@ -30,3 +87,4 @@
 		</div>
 
 {% endblock content %}
+</div>

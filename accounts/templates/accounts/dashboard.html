@@ -1,4 +1,10 @@
 <link rel="stylesheet" href="../../../static/css/scroll_table.css">
+<!--===============================================================================================-->	
+<link rel="icon" type="image/png" href="../../../static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+<link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
 <style>
 	body {
 		overflow-x: hidden;
@@ -29,12 +35,39 @@
 	}
 	.row2{
 		margin-left: 12vh !important;
+		width: 100% !important;
 	}
 	.card3 {
-		width: 96vh !important;
+		width: 57% !important;
 	}
-</style>
+	.table-fixed td {
+		width: 300px !important;
+		min-width: 120px !important;
+	}
+	.heading td {
+		font-weight: 700 !important;
+	}
+	.container-login100 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;  
+}
 
+.container-login100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.9);
+}
+</style>
+<div class="container-login100" style="background-image: url('../../../static/images/bg-01.jpg');">
 {%  extends 'accounts/main.html' %}
 
 {% block content %}
@@ -45,16 +78,18 @@
 
 <div class="row row2">
 	<div class="col-md-4">
-		<h5>CUSTOMERS</h5>
+		<h5 style="font-weight: 700;"><i class="far fa-thin fa-user"></i>&nbsp;&nbsp;&nbsp;CUSTOMERS</h5>
 		<hr>
 		<div class="card card-body">
 			
 			<table class="table table-sm table-condensed table-fixed">
+				<thead class="heading">
 				<tr>
-					<th>Customer</th>
-					<th>Phone</th>
-					<th>Action</th>
+					<td>Customer</td>
+					<td>Phone</td>
+					<td>Action</td>
 				</tr>
+			</thead>
 				{% for customer in customers %}
 				<tr>
 					<td>{{ customer.name }}</td>
@@ -67,17 +102,17 @@
 	</div>
 
 	<div class="col-md-6 card3">
-		<h5>ORDERS</h5>
+		<h5 style="font-weight: 700;"><i class="far fa-thin fa-box-open"></i>&nbsp;&nbsp;&nbsp;ORDERS</h5>
 		<hr>
 		<div class="card card-body">
 			<table class="table table-sm table-condensed table-fixed">
-				<thead>
+				<thead class="heading">
 				<tr>
-					<th>Product</th>
-					<th>Date Orderd</th>
-					<th>Status</th>
-					<th>Update</th>
-					<th>Remove</th>
+					<td>Product</td>
+					<td>Date Orderd</td>
+					<td>Status</td>
+					<td>Update</td>
+					<td>Remove</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -98,3 +133,4 @@
 </div>
 
 {% endblock %}
+</div>

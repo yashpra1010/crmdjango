@@ -1,12 +1,12 @@
 {% load static %}
 <style>
   .hello-msg{
-    font-size:18px;
+    font-size:20px;
     color:#000;
     margin-right: 20px;
     text-transform: uppercase;
-    width: 300px;
-    max-width: 400px;
+    min-width: 200px;
+    max-width: 500px;
     font-weight: 700;
   }
   .logoutBTN {
@@ -14,15 +14,16 @@
   }
   .navbar-brand{
     margin-left: 9vh !important;
-    max-width: 80px;
+    max-width: 50px;
   }
   .navbar{
+
     background: #fff;
   }
   
   .navbar-collapse .nav-link {
     margin-left: 5vh;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
   }
   .navbar-collapse .nav-link:hover {
@@ -30,7 +31,7 @@
   }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <img class="navbar-brand" src="https://res.cloudinary.com/yashpra1010/image/upload/v1659451746/images/logo_transparent_bg_pmp7tl.png">
       <button
@@ -50,6 +51,7 @@
           <a class="nav-link" aria-current="page" href="{% url 'home' %}">Dashboard</a>
           <a class="nav-link" href="{% url 'products' %}">Products</a>
           {% else %}
+          <a class="nav-link" href="/user">Home</a>
           <a class="nav-link" href="{% url 'account' %}">Settings</a>
         </div>
         {% endif %}
@@ -58,3 +60,4 @@
     <span class="hello-msg"><a style="font-size: 30px;">&#128075</a> Hello , {{request.user}}</span>
     <span class="logoutBTN"><a class="nav-link btn-danger btn-rounded" href="{% url 'logout' %}">Logout<i class="fa fa-arrow-right-from-bracket"></i></a></span>
   </nav>
+  <br><br><br>

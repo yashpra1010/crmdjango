@@ -1,4 +1,11 @@
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+<link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
+
 <style>
+	body {
+		overflow-x: hidden !important;
+	}
 	.row5 {
 		margin-left: 12vh !important;
 		margin-right: 14vh !important;
@@ -9,7 +16,7 @@
 	}
 	.table-fixed tbody {
 		display: block;
-		height: 300px;
+		height: 220px;
 		overflow-y: auto;
 	}
 
@@ -24,8 +31,8 @@
 	.table-fixed td {
 		width: 300px !important;
 		min-width: 100px !important;
+		font-size: 18px !important;
 	}
-
 	.table-fixed thead tr th {
 		width: 300px !important;
 		min-width: 100px !important;
@@ -34,7 +41,27 @@
 	.heading td {
 		font-weight: 700 !important;
 	}
+	.container-login100 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;  
+}
+
+.container-login100::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.9);
+}
 </style>
+<div class="container-login100" style="background-image: url('../../../static/images/bg-01.jpg');">
 {% extends 'accounts/main.html' %}
 {% block content%}
 {% include 'accounts/status.html' %}
@@ -44,10 +71,10 @@
 			<table class="table table-sm table-condensed table-fixed table-striped">
 				<thead>
 				<tr class="heading">
-					<td>Product</td>
-					<td>Note</td>
-					<td>Date Orderd</td>
-					<td>Status</td>
+					<td><i class="far fa-thin fa-box-open"></i>&nbsp;&nbsp;&nbsp;Product</td>
+					<td><i class="far fa-thin fa-pencil"></i>&nbsp;&nbsp;&nbsp;Note</td>
+					<td><i class="far fa-thin fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;Date Orderd</td>
+					<td><i class="far fa-thin fa-clock"></i>&nbsp;&nbsp;&nbsp;Status</td>
 				</tr>
 			</thead>
 				{% for order in orders %}
@@ -65,3 +92,4 @@
 </div>
 
 {% endblock %}
+</div>
