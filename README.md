@@ -2,8 +2,8 @@
 ###### Web-App Using Django Framework + Django REST Framework
 
 ## QUICK LINKS
-- [Home](https://crmappyp10.herokuapp.com/)
-- [Admin Dashboard](https://crmappyp10.herokuapp.com/admin/)
-- [Customer API](https://crmappyp10.herokuapp.com/crm-apis/cust-api)
-- [Product API](https://crmappyp10.herokuapp.com/crm-apis/product-api)
-- [Order API](https://crmappyp10.herokuapp.com/crm-apis/order-api)
+- [Home](http://127.0.0.1:8000/)
+- [Admin Dashboard](https://127.0.0.1:8000/admin/)
+- [Customer API](http://127.0.0.1:8000/crm-apis/cust-api)
+- [Product API](http://127.0.0.1:8000/crm-apis/product-api)
+- [Order API](http://127.0.0.1:8000/crm-apis/order-api)
