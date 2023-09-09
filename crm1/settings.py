@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 import cloudinary_storage
-from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,12 +10,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-lav%%ne=5+u=%wlf4gj*+6+4ay6)!88no8@02-z-rkqeviyfxc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',cast=bool)
-
-ALLOWED_HOSTS = ['127.0.0.1','crmappyp10.herokuapp.com']
+DEBUG = True
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,8 +66,8 @@ TEMPLATES = [
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'yashpra1010',
-    'API_KEY': config('API_KEY'),
-    'API_SECRET': config('API_SECRET'),
+    'API_KEY': '917192215444534',
+    'API_SECRET': 'QcFCFISD4iwSvmqIRvzdaYGYi1E',
 }
 
 WSGI_APPLICATION = 'crm1.wsgi.application'
@@ -145,10 +145,10 @@ REST_FRAMEWORK = {
 #'''
 #SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'demonz.yash.2@gmail.com'
+EMAIL_HOST_PASSWORD = 'jvnbzidlybgwwfly'
 
 #'''

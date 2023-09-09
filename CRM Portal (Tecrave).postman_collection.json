@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "60b324f2-24a9-4024-b943-c4d2a3253eb6",
+		"name": "CRM Portal (Tecrave)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24632981"
+	},
+	"item": [
+		{
+			"name": "cust-api",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "yash",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/crm-apis/cust-api",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"crm-apis",
+						"cust-api"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "root",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "root",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Customers API"
+			},
+			"response": []
+		},
+		{
+			"name": "product-api",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "yash",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/crm-apis/product-api",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"crm-apis",
+						"product-api"
+					]
+				},
+				"description": "Product API"
+			},
+			"response": []
+		},
+		{
+			"name": "order-api",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "yash",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "root",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/crm-apis/order-api",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"crm-apis",
+						"order-api"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "root",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "root",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Order API"
+			},
+			"response": []
+		}
+	]
+}
